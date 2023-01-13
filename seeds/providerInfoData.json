@@ -6,7 +6,7 @@
     "small": true,
     "medium": true,
     "large": false,
-    "provider_id": 1
+    "user_id": 1
   },
   {
     "email": "walkking@msn.com",
@@ -15,7 +15,7 @@
     "small": true,
     "medium": true,
     "large": true,
-    "provider_id": 2
+    "user_id": 4
   },
   {
     "email": "waggin@gmail.com",
@@ -24,6 +24,6 @@
     "small": false,
     "medium": true,
     "large": true,
-    "provider_id": 3
+    "user_id": 3
   }
 ]

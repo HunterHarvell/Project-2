@@ -26,10 +26,10 @@ Review.init(
         key: "id",
       },
     },
-    provider_id: {
+    provider_info_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "provider",
+        model: "providerInfo",
         key: "id",
       },
     },

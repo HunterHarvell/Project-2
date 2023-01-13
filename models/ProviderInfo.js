@@ -28,24 +28,24 @@ ProviderInfo.init(
       allowNull: false,
     },
     small:{
-      type: dataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       default: false,
     },
     medium:{
-      type: dataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       default: false,
     },
     large:{
-      type: dataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       default: false,
     },
-    provider_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'provider',
+        model: 'user',
         key: 'id',
       },
     },

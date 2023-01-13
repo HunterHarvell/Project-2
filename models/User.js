@@ -20,6 +20,11 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    isProvider:{
+      type: DataTypes.BOOLEAN,
+      notNull: true,
+      defaultValue: false,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

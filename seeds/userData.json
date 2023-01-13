@@ -1,14 +1,22 @@
 [
   {
     "name": "Sal A Mander",
-    "password": "password"
+    "password": "password",
+     "isProvider": true
   },
   {
     "name": "Jenny Jumper",
-    "password": "molly841"
+    "password": "molly841",
+    "isProvider": false
   },
   {
-    "name": "Need Walks",
-    "password": "toby3214"
+    "name": "Walker dog Walker",
+    "password": "toby3214",
+    "isProvider": true
+  },
+  {
+    "name": "Hello Kitty",
+    "password": "kitty214",
+    "isProvider": true
   }
 ]

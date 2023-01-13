@@ -1,0 +1,29 @@
+[
+  {
+    "email": "wdw@hotmail.com",
+    "phone": "343-332-2234",
+    "city": "San Francisco",
+    "small": true,
+    "medium": true,
+    "large": false,
+    "provider_id": 1
+  },
+  {
+    "email": "walkking@msn.com",
+    "phone": "425-334-2255",
+    "city": "Kirkland",
+    "small": true,
+    "medium": true,
+    "large": true,
+    "provider_id": 2
+  },
+  {
+    "email": "waggin@gmail.com",
+    "phone": "432-223-3245",
+    "city": "Woodinville",
+    "small": false,
+    "medium": true,
+    "large": true,
+    "provider_id": 3
+  }
+]

@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Service extends Model {}
+class Pet extends Model {}
 
-Service.init(
+Pet.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,24 +11,18 @@ Service.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    service_type: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-      defaultValue: 0.00,
+    breed: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    active: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      default: false,
-    },
-    provider_info_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "providerInfo",
+        model: "user",
         key: "id",
       },
     },
@@ -38,8 +32,8 @@ Service.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "service",
+    modelName: "pet",
   }
 );
 
-module.exports = Service;
+module.exports = Pet;

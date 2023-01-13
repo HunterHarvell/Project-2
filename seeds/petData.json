@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Molly",
+    "breed": "Pom-Chi",
+    "user_id": 4
+  },
+  {
+    "name": "Tank",
+    "breed": "Bulldog",
+    "user_id": 4
+  },
+  {
+    "name": "Shark",
+    "breed": "Grayhound",
+    "user_id": 1
+  },
+  {
+    "name": "Nellie",
+    "breed": "Westie",
+    "user_id": 2
+  },
+  {
+    "name": "Aiden",
+    "breed": "Pitbull",
+    "user_id": 3
+  }
+]

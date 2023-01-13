@@ -1,14 +1,14 @@
 const User = require('./User');
 const Review = require('./Review');
-const Provider = require('./Provider');
 const Service = require('./Service');
 const ProviderInfo = require('./ProviderInfo');
+const Pet = require('./Pet');
 
-Provider.hasA(ProviderInfo, {
+User.hasOne(ProviderInfo, {
   onDelete: 'CASCADE'
 });
-ProviderInfo.belongsTo(Provider,{
-  foreignKey: 'provider_id'
+ProviderInfo.belongsTo(User,{
+  foreignKey: 'user_id'
 })
 
 User.hasMany(Review, {
@@ -19,23 +19,30 @@ Review.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Provider.hasMany(Review, {
+ProviderInfo.hasMany(Review, {
   onDelete: 'CASCADE'
 });
 
-Review.belongsTo(Provider, {
-  foreignKey: 'provider_id'
+Review.belongsTo(ProviderInfo, {
+  foreignKey: 'providerInfo_id'
 });
 
-Provider.hasMany(Service, {
+ProviderInfo.hasMany(Service, {
   onDelete: 'CASCADE'
 });
 
-Service.belongsTo(Provider, {
-  foreignKey: "provider_id",
+Service.belongsTo(ProviderInfo, {
+  foreignKey: "providerInfo_id",
+});
+
+User.hasMany(Pet,{
+  onDelete: 'CASCADE'
+});
+
+Pet.belongsTo(User,{
+  foreignKey: "user_id",
 });
 
 
 
-
-module.exports = { User, Review, Provider, ProviderInfo, Service };
+module.exports = { User, Review, ProviderInfo, Pet, Service };

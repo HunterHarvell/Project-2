@@ -1,17 +1,91 @@
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
-    "password": "password12345"
+    "service_type": "Walk",
+    "price": 25.5,
+    "active": true,
+    "provider_id": 1
   },
   {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
-    "password": "password12345"
+    "service_type": "Drop In",
+    "price": 0.0,
+    "active": false,
+    "provider_id": 1
   },
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
+    "service_type": "Day Care in Home",
+    "price": 55.0,
+    "active": true,
+    "provider_id": 1
+  },
+  {
+    "service_type": "House Sitting",
+    "price": 75.0,
+    "active": true,
+    "provider_id": 1
+  },
+  {
+    "service_type": "Extra pet",
+    "price": 15.0,
+    "active": true,
+    "provider_id": 1
+  },
+  {
+    "service_type": "Walk",
+    "price": 35.00,
+    "active": true,
+    "provider_id": 2
+  },
+  {
+    "service_type": "Drop In",
+    "price": 20.0,
+    "active": true,
+    "provider_id": 2
+  },
+  {
+    "service_type": "Day Care in Home",
+    "price": 45.0,
+    "active": true,
+    "provider_id": 2
+  },
+  {
+    "service_type": "House Sitting",
+    "price": 65.0,
+    "active": true,
+    "provider_id": 2
+  },
+  {
+    "service_type": "Extra pet",
+    "price": 25.0,
+    "active": true,
+    "provider_id": 2
+  },
+  {
+    "service_type": "Walk",
+    "price": 21.00,
+    "active": true,
+    "provider_id": 3
+  },
+  {
+    "service_type": "Drop In",
+    "price": 0.0,
+    "active": false,
+    "provider_id": 3
+  },
+  {
+    "service_type": "Day Care in Home",
+    "active": false,
+    "provider_id": 3
+  },
+  {
+    "service_type": "House Sitting",
+    "price": 75.00,
+    "active": true,
+    "provider_id": 3
+  },
+  {
+    "service_type": "Extra pet",
+    "price": 20.0,
+    "active": true,
+    "provider_id": 3
   }
 ]

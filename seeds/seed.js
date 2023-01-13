@@ -3,9 +3,9 @@ const { User, ProviderInfo, Provider, Service, Review } = require('../models');
 
 const userData = require('./userData.json');
 const providerData = require('./providerData.json');
-const providerInfoData = require("./providerInfoData.json");
-const reviewData = require("./reviewData.json");
-const serviceData = require("./serviceData.json");
+const providerInfoData = require('./providerInfoData.json');
+const reviewData = require('./reviewData.json');
+const serviceData = require('./serviceData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });

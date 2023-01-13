@@ -18,6 +18,7 @@ Service.init(
     price: {
       type: DataTypes.FLOAT,
       allowNull: false,
+      defaultValue: 0.00,
     },
     active: {
       type: dataTypes.BOOLEAN,

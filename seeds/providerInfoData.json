@@ -1,17 +1,29 @@
 [
   {
-    "name": "Music Near Me",
-    "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-    "needed_funding": 5000
+    "email": "wdw@hotmail.com",
+    "phone": "343-332-2234",
+    "city": "San Francisco",
+    "small": true,
+    "medium": true,
+    "large": false,
+    "provider_id": 1
   },
   {
-    "name": "The Ultimate Tech Quiz",
-    "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-    "needed_funding": 10000
+    "email": "walkking@msn.com",
+    "phone": "425-334-2255",
+    "city": "Kirkland",
+    "small": true,
+    "medium": true,
+    "large": true,
+    "provider_id": 2
   },
   {
-    "name": "Roll 'Em Up",
-    "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-    "needed_funding": 800
+    "email": "waggin@gmail.com",
+    "phone": "432-223-3245",
+    "city": "Woodinville",
+    "small": false,
+    "medium": true,
+    "large": true,
+    "provider_id": 3
   }
 ]

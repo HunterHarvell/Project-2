@@ -79,4 +79,11 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//FIXME: remove used to see handlebars
+router.get("/psignup", (req, res) => {
+  
+
+  res.render("provider-signup");
+});
+
 module.exports = router;

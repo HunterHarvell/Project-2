@@ -1,70 +1,18 @@
 const router = require("express").Router();
-const { Review, Provider, User } = require("../../models");
-
-router.get("/", async (req, res) => {
-  try {
-    const reviewData = await Review.findAll({ include: Provider });
-    res.status(200).json(reviewData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/:id", async (req, res) => {
-  try {
-    const reviewData = await Review.findAll(req.params.id, {
-      include: Provider,
-    });
-    if (!reviewData) {
-      res.status(404).json({ message: "couldn't find reviews" });
-    } else {
-      res.status(200).json(reviewData);
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const reviewData = await Review.create(req.body);
-    res.status(200).json(reviewData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+    const userData = await User.create(req.body);
 
-router.put("/:id", async (req, res) => {
-  try {
-    const reviewData = await Review.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!reviewData[0]) {
-      res.status(404).json({ message: "couldn't find review" });
-      return;
-    }
-    res.status(200).json(reviewData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+    req.session.save(() => {
+      res.session.user_id = userData.id;
+      req.session.logged_in = true;
 
-router.delete("/:id", async (req, res) => {
-  try {
-    const reviewData = await Review.destroy({
-      where: {
-        id: req.params.id,
-      },
+      res.status(200).json(userData);
     });
-    if (reviewData) {
-      res.status(200).json(reviewData);
-    } else {
-      res.status(404).json({ message: "couldn't find review" });
-    }
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
@@ -73,18 +21,18 @@ router.post("/login", async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+      res.status(400).json({
+        message: "please check your email and password and try again.",
+      });
       return;
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+      res.status(400).json({
+        message: "please check your email and password and try again.",
+      });
       return;
     }
 
@@ -92,7 +40,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: "You are now logged in!" });
+      res.json({ user: userData, message: "Successful Login!" });
     });
   } catch (err) {
     res.status(400).json(err);

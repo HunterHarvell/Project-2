@@ -4,23 +4,10 @@ const withAuth = require("../../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    const petData = await Pet.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["name"],
-        },
-      ],
+    const petData = await petData.findAll({
+      include: user,
     });
-
-    // Serialize data so the template can read it
-    const pets = petData.map((pet) => pet.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render("homepage", {
-      projects,
-      logged_in: req.session.logged_in,
-    });
+    res.status(200).json(petData);
   } catch (err) {
     res.status(500).json(err);
   }

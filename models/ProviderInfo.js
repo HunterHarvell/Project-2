@@ -11,14 +11,6 @@ ProviderInfo.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
     phone: {
       type: DataTypes.STRING,
       allowNull: true,

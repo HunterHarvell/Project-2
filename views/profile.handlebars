@@ -9,7 +9,7 @@
   <div class="col-md-6 listing-list">
     <h3>Current Listing:</h3>
 
-    {{#each listing}}
+    {{#each services as |service|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/listing/{{listing.id}}">{{listing.name}}</a></h4>

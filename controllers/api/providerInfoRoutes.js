@@ -1,10 +1,11 @@
 const router = require("express").Router();
-const { ProviderInfo, Provider } = require("../../models");
+const { ProviderInfo, Service } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
     const providerInfoData = await providerInfoData.findAll({
-      include: Provider,
+      include: Service,
     });
     res.status(200).json(providerInfoData);
   } catch (err) {
@@ -15,10 +16,12 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const ProviderInfo = await ProviderInfo.findAll(req.params.id, {
-      include: Provider,
+      include: Service,
     });
     if (!providerInfoData) {
-      res.status(404).json({ message: "couldn't find reviews" });
+      res
+        .status(404)
+        .json({ message: "couldn't find information on provider" });
     } else {
       res.status(200).json(providerInfoData);
     }
@@ -27,9 +30,12 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
-    const providerInfoData = await ProviderInfo.create(req.body);
+    const providerInfoData = await ProviderInfo.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
     res.status(200).json(providerInfoData);
   } catch (err) {
     res.status(500).json(err);
@@ -44,7 +50,9 @@ router.put("/:id", async (req, res) => {
       },
     });
     if (!providerInfoData[0]) {
-      res.status(404).json({ message: "couldn't find info on provider" });
+      res
+        .status(404)
+        .json({ message: "couldn't find information on provider" });
       return;
     }
     res.status(200).json(providerInfoData);
@@ -53,11 +61,12 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const providerInfoData = await ProviderInfo.destroy({
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
     if (providerInfoData) {

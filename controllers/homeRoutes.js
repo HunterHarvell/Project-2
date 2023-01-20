@@ -4,7 +4,6 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
     const providerData = await ProviderInfo.findAll({
       include: [
         {
@@ -15,7 +14,9 @@ router.get("/", async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const providers = providerData.map((providerInfo) => providerInfo.get({ plain: true }));
+    const providers = providerData.map((providerInfo) =>
+      providerInfo.get({ plain: true })
+    );
 
     // Pass serialized data and session flag into template
     res.render("homepage", {
@@ -81,8 +82,6 @@ router.get("/login", (req, res) => {
 
 //FIXME: remove used to see handlebars
 router.get("/psignup", (req, res) => {
-  
-
   res.render("provider-signup");
 });
 

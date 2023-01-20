@@ -1,9 +1,10 @@
 const router = require("express").Router();
-const { Service, Provider } = require("../../models");
+const { Service, ProviderInfo } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    const serviceData = await Service.findAll({ include: Provider });
+    const serviceData = await Service.findAll({ include: ProviderInfo });
     res.status(200).json(serviceData);
   } catch (err) {
     res.status(500).json(err);
@@ -13,7 +14,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const serviceData = await Service.findAll(req.params.id, {
-      include: Provider,
+      include: ProviderInfo,
     });
     if (!serviceData) {
       res.status(404).json({ message: "couldn't find the service" });
@@ -25,9 +26,12 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
-    const serviceData = await Service.create(req.body);
+    const serviceData = await Service.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
     res.status(200).json(serviceData);
   } catch (err) {
     res.status(500).json(err);
@@ -51,11 +55,12 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const serviceData = await Service.destroy({
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
     if (serviceData) {

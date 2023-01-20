@@ -1,3 +1,13 @@
+{{!-- FIXME: should have user and provider info to update as this updates
+people that are both user-update updates people that are just users
+copy info from user-update --}}
+{{!-- TODO: need to fill in values from database like in user-update 
+but need provder info added to providerUpdate homeroute first --}}
+<div class="row">
+  <div class="col-auto">
+    <h2>Update the profile for {{name}}</h2>
+  </div>
+</div>
 <div>
     <div class ="form-group">
         <label for="location-signup">What city are you located in?</label>
@@ -24,6 +34,9 @@
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">Update Listing</button>
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+    </div>
+     <div class="form-group">
+        <button class="btn btn-primary" type="submit">Remove Provider Status</button>
     </div>
 </div>

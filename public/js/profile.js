@@ -27,26 +27,13 @@
 //   }
 // };
 
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/providerInfo/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to delete project');
-    }
-  }
-};
 
 const updateButtonHandler = async(event) => {
  event.preventDefault();
   if (event.target.hasAttribute('providerCheck')) {
      const provider = event.target.getAttribute('providerCheck');
+     //FIXME: if statement not working always goes to provider update
     console.log("is provider is showing" + provider);
     if(provider == 0){
       document.location.replace("/userupdate");
@@ -56,17 +43,25 @@ const updateButtonHandler = async(event) => {
   }
 };
 
+const becomeProviderButtonHandler = async (event) => {
+  event.preventDefault();
+ // TODO: add code to run put to user to change isProvider true
+  document.location.replace("/providersignup");
+};
+
 document  
- .querySelector('.profile-page')
+ .querySelector('#updateProfile')
  .addEventListener('click', updateButtonHandler);
+
+ document
+   .querySelector("#becomeProvider")
+   .addEventListener("click", becomeProviderButtonHandler);
 
 // document
 //   .querySelector('.new-project-form')
 //   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
+
 
 
  

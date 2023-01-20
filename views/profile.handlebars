@@ -5,6 +5,7 @@
   </div>
 </div>
 
+
 <div>
   {{#if isProvider}}
   <div class="col-md-6 profile-page">
@@ -19,11 +20,17 @@
     {{#each Service}}
     <p>Service: {{service.service_type}} ${{service.price}}</p>
    {{/each}} --}}
+   {{else}}
+
+    <div class="col-md-6 profile-page">
+        <button class="btn btn-primary" id="becomeProvider" >Become a Provider</button>
+    </div>
+
     {{/if}}
 
 
     <div class="col-md-6 profile-page">
-        <button class="btn btn-primary" providerCheck={{isProvider}} >Update Profile</button>
+        <button class="btn btn-primary" id="updateProfile" providerCheck={{isProvider}} >Update Profile</button>
     </div>
     
     

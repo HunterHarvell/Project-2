@@ -1,19 +1,16 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Create your Provider Profile</h2>
+  </div>
+</div>
 <div>
       <form class="form signup-form">
         <div class="form-group">
-            <label for="name-signup">Name:</label>
-            <input class="form-input" type="text" id="name-signup" />
-        </div>
-        <div class="form-group">
-            <label for="email-signup">Email:</label>
-            <input class="form-input" type="text" id="email-signup" />
-        </div>
-        <div class="form-group">
-            <label for="password-signup">Password:</label>
-            <input class="form-input" type="password" id="password-signup" />
+            <label for="phone-signup">Phone number:</label>
+            <input class="form-input" type="text" id="phone-signup" />
         </div>
         <div class ="form-group">
-            <label for="location-signup">What city are you located in?</label>
+            <label for="location-signup">What city do you provide services for?</label>
             <input class="form-input" type="text" id="location-signup" />
         </div>
         <div class ="form-group">
@@ -28,9 +25,21 @@
             <label for="STdogSitting">Are you available for short-term (less than 8 hours) dog sitting?</label>
             <input class="form-input" type="checkbox" id="STdogSitting-signup" />
         </div>
-           <div>
+        <div>
             <label for="LTdogSitting">Are you available for long-term (muliple day) dog sitting?</label>
             <input class="form-input" type="checkbox" id="LTdogSitting-signup" />
+        </div>
+        </div>
+            <label for="smallDog">Do you service small dogs?(0-35lbs)</label>
+            <input class="form-input" type="checkbox" id="smallDog-signup" />
+        </div>
+         </div>
+            <label for="medDog">Do you service medium dogs?(35-70lbs)</label>
+            <input class="form-input" type="checkbox" id="medDog-signup" />
+        </div>
+         </div>
+            <label for="largeDog">Do you service large dogs?(70+lbs)</label>
+            <input class="form-input" type="checkbox" id="largeDog-signup" />
         </div>
         <div>
             <button id="upload_widget" class="cloudinary-button">Upload files</button>
@@ -43,4 +52,4 @@
 </div>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
 <script src="./js/cloudinary.js" type="text/javascript"></script>
-{{!-- <script src="./js/providerUpdate.js"></script> --}}
+<script src="./js/providerSignup.js"></script>

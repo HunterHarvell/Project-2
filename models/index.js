@@ -5,11 +5,12 @@ const ProviderInfo = require('./ProviderInfo');
 const Pet = require('./Pet');
 
 User.hasOne(ProviderInfo, {
+  foreignKey: 'user_id',
   onDelete: 'CASCADE'
+ 
 });
 ProviderInfo.belongsTo(User,{
-  foreignKey: 'user_id'
-})
+});
 
 User.hasMany(Review, {
   onDelete: 'CASCADE'

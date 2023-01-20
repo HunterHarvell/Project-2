@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     );
 
     // Pass serialized data and session flag into template
-    res.render("homepage", {
+    res.render("login", {
       providers,
       logged_in: req.session.logged_in,
     });
@@ -56,7 +56,7 @@ router.get("/profile", withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
-      include: [{ model: Listing }],
+      include: [{ model: ProviderInfo }],
     });
 
     const user = userData.get({ plain: true });
@@ -70,10 +70,11 @@ router.get("/profile", withAuth, async (req, res) => {
   }
 });
 
+
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.redirect("/listings");
     return;
   }
 
@@ -83,6 +84,14 @@ router.get("/login", (req, res) => {
 //FIXME: remove used to see handlebars
 router.get("/psignup", (req, res) => {
   res.render("provider-signup");
+});
+
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
+router.get("/listings", (req, res) => {
+  res.render("listings");
 });
 
 module.exports = router;

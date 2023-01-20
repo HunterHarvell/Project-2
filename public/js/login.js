@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/listings');
       } else {
         alert(response.statusText);
       }
@@ -28,7 +28,7 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
     const isProvider = document.querySelector('#provider-signup').checked;
   
-    if (name && email && password) {
+    if (name && email && password && isProvider) {
       const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ name, email, password, isProvider }),
@@ -36,7 +36,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/listings');
       } else {
         alert(response.statusText);
       }

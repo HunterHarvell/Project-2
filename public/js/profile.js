@@ -53,9 +53,9 @@ document
  .querySelector('#updateProfile')
  .addEventListener('click', updateButtonHandler);
 
- document
-   .querySelector("#becomeProvider")
-   .addEventListener("click", becomeProviderButtonHandler);
+document
+ .querySelector("#becomeProvider")
+ .addEventListener("click", becomeProviderButtonHandler);
 
 // document
 //   .querySelector('.new-project-form')

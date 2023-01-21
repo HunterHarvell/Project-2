@@ -16,10 +16,10 @@
     </div>
     <div class="form-group">
         <label for="password-signup">Password:</label>
-        {{!-- FIXME: can we get password back unencrypted? --}}
-        <input class="form-input" type="password" id="password-signup" value={{password}} />
-    {{!-- </div>
-    <div class ="form-group">
+        <input class="form-input" type="password" id="password-signup" />
+       <p>password must be at least 8 characters</p>
+      </div>
+     {{!--<div class ="form-group">
             FIXME: if we update is provider here what is the logic? if it's checked then we would
            have to give a provider signup page but we don't want to do that if they are already a provider. I think this causes 
            problems. Maybe a button somewhere to delete being a provider if you want or a button to sign up as a provider but if you just

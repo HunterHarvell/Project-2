@@ -19,14 +19,19 @@ router.post("/", async (req, res) => {
 router.put("/update", async (req, res) => {
   try {
     console.log("this is before update");
-    const userData = await User.update({name:req.body.name,email:req.body.email,password:req.body.password});
-console.log("update button user data" + userData);
+    console.log("this is session id " + req.session.user_id);
+    //TODO:replace password:req.body.password in update
+    const userData = await User.update(
+      { name: req.body.name, email: req.body.email },
+      { where: { id: res.session.user_id } }
+    );
+    console.log("update button user data" + userData);
     //don't neet cause aleady logged in?
     // req.session.save(() => {
     //   res.session.user_id = userData.id;
     //   req.session.logged_in = true;
 
-      res.status(200).json(userData);
+    res.status(200).json(userData);
     //});
   } catch (err) {
     res.status(400).json(err);

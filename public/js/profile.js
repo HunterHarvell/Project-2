@@ -35,19 +35,33 @@ const updateButtonHandler = async(event) => {
      const provider = event.target.getAttribute('providerCheck');
      //FIXME: if statement not working always goes to provider update
     console.log("is provider is showing" + provider);
-    if(!provider){
+    if(provider === "false"){
       document.location.replace("/userupdate");
     }else{
+      console.log("is provider is showing" + provider);
       document.location.replace("/providerupdate");
     }
   }
-  console.log("is provider is showing" + provider);
+  
 };
 
 const becomeProviderButtonHandler = async (event) => {
   event.preventDefault();
  // TODO: add code to run put to user to change isProvider true
-  document.location.replace("/providersignup");
+ const isProvider = true;
+ const response = await fetch("/api/user/updateisprovider", {
+   method: "PUT",
+   body: JSON.stringify({ isProvider }),
+   headers: { "Content-Type": "application/json" },
+ }); 
+
+  if (response.ok) {
+      document.location.replace("/profile");
+    } else {
+      alert("Failed to delete provider");
+    }
+  
+ document.location.replace("/providersignup");
 };
 
 document  

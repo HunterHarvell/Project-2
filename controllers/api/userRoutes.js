@@ -38,6 +38,20 @@ router.put("/update", async (req, res) => {
   }
 });
 
+router.put("/updateisprovider", async (req, res) => {
+  try {
+   const userData = await User.update(
+      {isProvider: req.body.isProvider},
+      { where: { id: req.session.user_id } }
+    );
+    console.log("update button user data" + userData);
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });

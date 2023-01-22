@@ -30,17 +30,23 @@ console.log("response:" + response);
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute("data-id")) {
-    const id = event.target.getAttribute("data-id");
-//TODO: runn the routs for providerupdate and user update
-    const response = await fetch(`/api/providerInfo/${id}`, {
+  if (event.target.hasAttribute("provider-id")) {
+    const pid = event.target.getAttribute("provider-id");
+//TODO: run the routes for providerupdate and user update
+const isProvider = false;
+ const response = await fetch("/api/user/updateisprovider", {
+      method: "PUT",
+      body: JSON.stringify({ isProvider }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const response2 = await fetch(`/api/providerInfo/${pid}`, {
       method: "DELETE",
     });
-
-    if (response.ok) {
+      
+    if (response.ok && response2.ok) {
       document.location.replace("/profile");
     } else {
-      alert("Failed to delete project");
+      alert("Failed to delete provider");
     }
   }
 };

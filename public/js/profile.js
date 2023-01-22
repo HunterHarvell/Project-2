@@ -35,12 +35,13 @@ const updateButtonHandler = async(event) => {
      const provider = event.target.getAttribute('providerCheck');
      //FIXME: if statement not working always goes to provider update
     console.log("is provider is showing" + provider);
-    if(provider == 0){
+    if(!provider){
       document.location.replace("/userupdate");
     }else{
       document.location.replace("/providerupdate");
     }
   }
+  console.log("is provider is showing" + provider);
 };
 
 const becomeProviderButtonHandler = async (event) => {

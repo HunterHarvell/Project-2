@@ -26,3 +26,8 @@ header, .project:not(:last-child) {
 body {
   background-color: lightslategray;
 }
+.main-header {
+    background-image: './images/dogsraincoatscropped.jpg';
+    background-repeat: no-repeat;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

@@ -27,5 +27,5 @@ console.log("response:" + response);
   
 
 document
-  .querySelector(".form-group")
+  .querySelector(".info-update")
   .addEventListener("submit", saveUpdateFormHandler);

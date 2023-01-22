@@ -8,7 +8,7 @@ but need provder info added to providerUpdate homeroute first --}}
     <h2>Update the profile for {{name}}</h2>
   </div>
 </div>
-<div>
+<div class="form update-form">
     <div class ="form-group">
         <label for="location-signup">What city are you located in?</label>
         <input class="form-input" type="text" id="location-signup" />
@@ -20,11 +20,11 @@ but need provder info added to providerUpdate homeroute first --}}
         <label for="dog-walking">Are you available for dog walking services? Walks are one hour minimum.</label>
         <input class="form-input" type="checkbox" id="dogwalk-signup" />
     </div>
-    <div>
+    <div class="form-group">
         <label for="dog-feeding">Are you available to feed dogs for clients? Services typically take 15-30 minutes, but you will have to enter client's homes while they are away.</label>
         <input class="form-input" type="checkbox" id="dogfeeding-signup" />
     </div>
-    <div>
+    <div class="form-group">
         <label for="STdogSitting">Are you available for short-term (less than 8 hours) dog sitting?</label>
         <input class="form-input" type="checkbox" id="STdogSitting-signup" />
     </div>
@@ -32,24 +32,24 @@ but need provder info added to providerUpdate homeroute first --}}
         <label for="LTdogSitting">Are you available for long-term (muliple day) dog sitting?</label>
         <input class="form-input" type="checkbox" id="LTdogSitting-signup" />
     </div>
-    </div>
+    </div class="form-group">
             <label for="smallDog">Do you service small dogs?(0-35lbs)</label>
             <input class="form-input" type="checkbox" id="smallDog-signup" />
         </div>
-         </div>
+         </div class="form-group">
             <label for="medDog">Do you service medium dogs?(35-70lbs)</label>
             <input class="form-input" type="checkbox" id="medDog-signup" />
         </div>
-         </div>
+         </div class="form-group">
             <label for="largeDog">Do you service large dogs?(70+lbs)</label>
             <input class="form-input" type="checkbox" id="largeDog-signup" />
         </div>
-    <div>
+    <div class="form-group">
         <button id="upload_widget" class="cloudinary-button">Upload files</button>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">Save Changes</button>
+        <button class="btn btn-primary info-update" type="submit">Save Changes</button>
     </div>
      <div class="form-group">
         <button class="btn btn-primary" id="removeProvider" >Remove Provider Status</button>
@@ -57,3 +57,4 @@ but need provder info added to providerUpdate homeroute first --}}
 </div>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
 <script src="./js/cloudinary.js" type="text/javascript"></script>
+<script src="./js/providerUpdate.js"></script>

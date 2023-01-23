@@ -1,35 +1,58 @@
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
+    <p>Email: {{email}} </p>
   </div>
 </div>
 
-<div>
-  {{#if is_provider}}
-  <div class="col-md-6 listing-list">
-    <h3>Current Listing:</h3>
 
+<div>
+  {{#if isProvider}}
+  <div class="col-md-6 profile-page">
+    <h3>Thank you for being a Provider!</h3>
+    <h3>Your Provider Info:</h3>
+    <p>Phone: {{providerInfo.phone}}</p>
+    <p>City: {{providerInfo.city}}</p> 
+    <h3>Your Service Information:</h3>
+
+     {{!-- 
+    FIXME: need service from homeroutes
+    {{#each Service}}
+    <p>Service: {{service.service_type}} ${{service.price}}</p>
+   {{/each}} --}}
+   {{else}}
+
+    <div class="col-md-6 profile-page">
+        <button class="btn btn-primary" id="becomeProvider" >Become a Provider</button>
+    </div>
+
+    {{/if}}
+
+
+    <div class="col-md-6 profile-page">
+        <button class="btn btn-primary" id="updateProfile" providerCheck="{{isProvider}}" >Update Profile</button>
+    </div>
+    
+    
+    {{!-- 
+    FIXME:  Each provider will just have 1 so don't need to loop over them all
+    mathew needs to add the photo how do we retrieve it and show it here?
+    
+    this is how we need to do it for listings page where display all or on selected city?
     {{#each listing}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/listing/{{listing.id}}">{{listing.name}}</a></h4>
+        <h4><a href="/listing/{{service.id}}">{{service.name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{listing.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{service.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
   </div>
-  {{/if}}
+ --}}
 </div>
 
-<div class="row">
-  <div class="col-auto">
-    <h3>Profile Information</h3>
-  </div>
-  <div>
-    {{!-- profile information --}}
-  </div>
-</div>
+
 
 <script src="./js/profile.js"></script>

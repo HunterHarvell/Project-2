@@ -18,6 +18,8 @@ router.get("/", async (req, res) => {
       providerInfo.get({ plain: true })
     );
 
+    console.log("providers from homeroutes get " +providers)
+
     // Pass serialized data and session flag into template
     res.render("login", {
       providers,
@@ -28,7 +30,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/");
 
 router.get("/providers/:id", async (req, res) => {
   try {
@@ -62,6 +63,7 @@ router.get("/profile", withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+      console.log("user from homeroutes getprofile " + user);
 
     res.render("profile", {
       ...user,
@@ -74,14 +76,49 @@ router.get("/profile", withAuth, async (req, res) => {
 
 router.get("/listings", withAuth, async (req, res) => {
   try {
-    const userData = await Service.findByPk(req.session.user_id, {
+    // FIXME: I think this is going to need to be a find all not findbypk so we can display all provider info listings
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: ProviderInfo }],
     });
 
     const user = userData.get({ plain: true });
-
+    console.log("users from homeroutes get listings"+user);
     res.render("listings", {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/userupdate", withAuth, async (req, res) => {
+  try {
+    // FIXME: I think this is going to need to be a find all not findbypk so we can display all provider info listings
+    const userData = await User.findByPk(req.session.user_id, {
+    });
+
+    const user = userData.get({ plain: true });
+    console.log("users from homeroutes get listings" + user);
+    res.render("user-update", {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/providerupdate", withAuth, async (req, res) => {
+  try {
+    // FIXME: Need providerInfo also in this route for the handlebars
+    // I think this is going to need to be a find all not findbypk so we can display all provider info listings
+    const userData = await User.findByPk(req.session.user_id, {});
+
+    const user = userData.get({ plain: true });
+    console.log("users from homeroutes get listings" + user);
+    res.render("provider-update", {
       ...user,
       logged_in: true,
     });
@@ -96,13 +133,29 @@ router.get("/login", (req, res) => {
     res.redirect("/listings");
     return;
   }
-
+  //if not not logged in show the login page
   res.render("login");
 });
 
-//FIXME: remove used to see handlebars
-router.get("/psignup", (req, res) => {
-  res.render("provider-signup");
+
+router.get("/providersignup", withAuth, (req, res) => {
+   if (req.session.logged_in) {
+   res.render("provider-signup", {
+      logged_in: true,
+    });
+    return;
+   }
+   //if not not logged in show the login page
+   res.render("login");
+  
 });
+
+// router.get("/profile", (req, res) => {
+//   res.render("profile");
+// });
+
+// router.get("/listings", (req, res) => {
+//   res.render("listings");
+// });
 
 module.exports = router;

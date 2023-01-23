@@ -19,17 +19,37 @@ ProviderInfo.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    small:{
+    dogWalk: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       default: false,
     },
-    medium:{
+    dogFeed: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       default: false,
     },
-    large:{
+    sTDogSit: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false,
+    },
+    lTDogSit: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false,
+    },
+    small: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false,
+    },
+    medium: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false,
+    },
+    large: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       default: false,
@@ -37,17 +57,17 @@ ProviderInfo.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
     },
   },
-  {   
+  {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'providerInfo',
+    modelName: "providerInfo",
   }
 );
 

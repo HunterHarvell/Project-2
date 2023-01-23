@@ -15,15 +15,15 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const ProviderInfo = await ProviderInfo.findAll(req.params.id, {
+    const providerInfo = await ProviderInfo.findAll(req.params.id, {
       include: Service,
     });
-    if (!providerInfoData) {
+    if (!providerInfo) {
       res
         .status(404)
         .json({ message: "couldn't find information on provider" });
     } else {
-      res.status(200).json(providerInfoData);
+      res.status(200).json(providerInfo);
     }
   } catch (err) {
     res.status(500).json(err);
@@ -36,26 +36,26 @@ router.post("/", withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
+    console.log("session userid: " + req.session.user_id);
     res.status(200).json(providerInfoData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
+
 router.put("/:id", async (req, res) => {
   try {
-    const providerInfoData = await ProviderInfo.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!providerInfoData[0]) {
+const provider= await ProviderInfo.findOne({ where: { id: req.params.id } });
+    await provider.update({...req.body});
+      console.log("provider array: " + provider);
+    if (!provider[0]) {
       res
         .status(404)
         .json({ message: "couldn't find information on provider" });
       return;
     }
-    res.status(200).json(providerInfoData);
+    res.status(200).json(provider);
   } catch (err) {
     res.status(500).json(err);
   }

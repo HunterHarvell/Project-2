@@ -11,26 +11,25 @@ const providerSignupFormHandler = async (event) => {
   const medDog = document.querySelector("#medDog-signup").checked;
   const largeDog = document.querySelector("#largeDog-signup").checked;
 
-  console.log(phone, city, password, isProvider);
-  //don't want provider in the if cause if not checked would be false so not needed and wouldn't
+  console.log(phone, city);
   if (phone && city) {
     const response = await fetch("/api/providers", {
       method: "POST",
       body: JSON.stringify({ phone, city, smallDog, medDog, largeDog}),
       headers: { "Content-Type": "application/json" },
     });
-
+    console.log("got to response");
+console.log(response);
     //TODO: add the calls to create the services
     console.log(response);
-    //FIXME: do we want an else with alert box for if one of the three is missing say why can't post?
     if (response.ok) {
-        document.location.replace("/listings");
+        document.location.replace("/profile");
     } else {
-      alert(response.statusText);
+      alert("failed to create provider info - make sure you have filled in phone and city");
     }
   }
 };
 
  document
-   .querySelector(".form-group")
-   .addEventListener("submit", providerSignupFormHandler);
+   .querySelector("#sign-up")
+   .addEventListener("click", providerSignupFormHandler);

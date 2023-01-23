@@ -55,7 +55,7 @@ const becomeProviderButtonHandler = async (event) => {
  }); 
 
   if (response.ok) {
-      document.location.replace("/profilesignup");
+     document.location.replace("/providersignup");
     } else {
       alert("Failed to change isProvider status");
     }

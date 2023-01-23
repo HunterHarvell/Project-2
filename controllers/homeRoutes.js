@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { ProviderInfo, User, Service } = require("../models");
+const { ProviderInfo, User} = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -112,10 +112,10 @@ router.get("/userupdate", withAuth, async (req, res) => {
 
 router.get("/providerupdate", withAuth, async (req, res) => {
   try {
-    // FIXME: Need providerInfo also in this route for the handlebars
-    // I think this is going to need to be a find all not findbypk so we can display all provider info listings
-    const userData = await User.findByPk(req.session.user_id, {});
-
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: ProviderInfo }],
+    });
     const user = userData.get({ plain: true });
     console.log("users from homeroutes get listings" + user);
     res.render("provider-update", {

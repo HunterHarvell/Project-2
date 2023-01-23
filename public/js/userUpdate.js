@@ -20,12 +20,13 @@ console.log("response:" + response);
     if (response.ok) {
       document.location.replace("/profile");
     } else {
-      alert(response.statusText);
+      // alert(response.statusText);
+      alert("update didn't save");
     }
   }
 };
   
 
 document
-  .querySelector(".info-update")
-  .addEventListener("submit", saveUpdateFormHandler);
+  .querySelector("#save-changes")
+  .addEventListener("click", saveUpdateFormHandler);

@@ -1,3 +1,8 @@
+<head
+ <link rel="stylesheet" href="./css/jass.css">
+ <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
 <div class="row">
   <div class="col-auto">
     <h2>Create your Provider Profile</h2>
@@ -8,6 +13,7 @@
         <div class="form-group">
             <label for="phone-signup">Phone number:</label>
             <input class="form-input" type="text" id="phone-signup" />
+            <p>Input Format xxx-xxx-xxxx</p>
         </div>
         <div class ="form-group">
             <label for="location-signup">What city do you provide services for?</label>
@@ -29,15 +35,15 @@
             <label for="LTdogSitting">Are you available for long-term (muliple day) dog sitting?</label>
             <input class="form-input" type="checkbox" id="LTdogSitting-signup" />
         </div>
-        </div>
+        <div>
             <label for="smallDog">Do you service small dogs?(0-35lbs)</label>
             <input class="form-input" type="checkbox" id="smallDog-signup" />
         </div>
-         </div>
+        <div>
             <label for="medDog">Do you service medium dogs?(35-70lbs)</label>
             <input class="form-input" type="checkbox" id="medDog-signup" />
         </div>
-         </div>
+        <div>
             <label for="largeDog">Do you service large dogs?(70+lbs)</label>
             <input class="form-input" type="checkbox" id="largeDog-signup" />
         </div>
@@ -46,7 +52,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Signup</button>
+            <button class="btn btn-primary" id="sign-up" type="submit">Signup</button>
         </div>
     </form>
 </div>

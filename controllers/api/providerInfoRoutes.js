@@ -46,18 +46,16 @@ router.post("/", withAuth, async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const providerInfoData = await ProviderInfo.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!providerInfoData[0]) {
+const provider= await ProviderInfo.findOne({ where: { id: req.params.id } });
+    await provider.update({...req.body});
+      console.log("provider array: " + provider);
+    if (!provider[0]) {
       res
         .status(404)
         .json({ message: "couldn't find information on provider" });
       return;
     }
-    res.status(200).json(providerInfoData);
+    res.status(200).json(provider);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -1,6 +1,5 @@
 const User = require('./User');
 const Review = require('./Review');
-const Service = require('./Service');
 const ProviderInfo = require('./ProviderInfo');
 
 User.hasOne(ProviderInfo, {
@@ -27,14 +26,5 @@ Review.belongsTo(ProviderInfo, {
   foreignKey: 'providerInfo_id'
 });
 
-ProviderInfo.hasMany(Service, {
-  onDelete: 'CASCADE'
-});
 
-Service.belongsTo(ProviderInfo, {
-  foreignKey: "providerInfo_id",
-});
-
-
-
-module.exports = { User, Review, ProviderInfo, Service };
+module.exports = { User, Review, ProviderInfo};

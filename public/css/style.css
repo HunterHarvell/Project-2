@@ -27,8 +27,13 @@ body{
   background-color: lightslategray;
 }
 .banner {
-    background-image: './images/dogsraincoatscropped2.jpg';
+    background-image: url('../images/dogsraincoatscropped2.jpg');
     background-repeat: no-repeat;
+    background-size: cover
+    
+}
+header{
+  min-height: 200px;
 }
  /* {
     background-image: './images/dogsraincoats.jpg';

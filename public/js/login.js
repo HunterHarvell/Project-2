@@ -44,7 +44,7 @@ const loginFormHandler = async (event) => {
         document.location.replace('/listings');
         }
       } else {
-        alert(response.statusText);
+        alert("email needs to be unique and password 8+ characters");
       }
     }
   };

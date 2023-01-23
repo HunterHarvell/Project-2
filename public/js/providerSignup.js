@@ -5,8 +5,10 @@ const providerSignupFormHandler = async (event) => {
 
   const phone = document.querySelector("#phone-signup").value.trim();
   const city = document.querySelector("#location-signup").value.trim();
-  
-  const dogwalk = document.querySelector("#dogwalk-signup").checked;
+  const dogWalk = document.querySelector("#dogwalk-signup").checked;
+  const dogFeed = document.querySelector("#dogfeeding-signup").checked;
+  const sTDogSit = document.querySelector("#STdogSitting-signup").checked;
+  const lTDogSit = document.querySelector("#LTdogSitting-signup").checked;
   const smallDog = document.querySelector("#smallDog-signup").checked;
   const medDog = document.querySelector("#medDog-signup").checked;
   const largeDog = document.querySelector("#largeDog-signup").checked;
@@ -15,7 +17,7 @@ const providerSignupFormHandler = async (event) => {
   if (phone && city) {
     const response = await fetch("/api/providers", {
       method: "POST",
-      body: JSON.stringify({ phone, city, smallDog, medDog, largeDog}),
+      body: JSON.stringify({ phone, city, dogWalk,dogFeed, sTDogSit, lTDogSit,small:smallDog, medium:medDog, large:largeDog}),
       headers: { "Content-Type": "application/json" },
     });
     console.log("got to response");

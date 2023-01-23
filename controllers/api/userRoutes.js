@@ -39,15 +39,13 @@ router.put("/update", async (req, res) => {
 
 router.put("/updateisprovider", async (req, res) => {
   try {
-    // const userData = await User.update(
-    //   { isProvider: req.body.isProvider },
-    //   { where: { id: req.session.user_id } }
-    // );
-
-    const user= await User.findOne({ where: { id: res.session.user_id } });
-    user.isProvider = req.body.isProvider;
-    await user.save();
-
+    // const user = await User.findOne({ where: { id: res.session.user_id } });
+    const user = await User.update(
+      req.body,
+      { where: { id: req.session.user_id } }
+    );
+    // user.isProvider = req.body.isProvider;
+    // await user.save();
 
     console.log("update button user data" + user);
 

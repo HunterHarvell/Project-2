@@ -44,12 +44,11 @@ const isProvider = false;
       body: JSON.stringify({ isProvider }),
       headers: { "Content-Type": "application/json" },
     });
-    // const response2 = await fetch(`/api/providers/${pid}`, {
-    //   method: "DELETE",
-    // });
+    const response2 = await fetch(`/api/providers/${pid}`, {
+      method: "DELETE",
+    });
       
-   // if (response.ok && response2.ok) {
-    if (response.ok){
+    if (response.ok && response2.ok) {
       document.location.replace("/profile");
     } else {
       alert("Failed to delete provider");

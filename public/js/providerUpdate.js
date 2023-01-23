@@ -1,30 +1,34 @@
 
 const saveUpdateFormHandler = async (event) => {
   event.preventDefault();
-
+  const phone = document.querySelector("#phone-signup").value.trim();
   const city = document.querySelector("#location-signup").value.trim();
-  const dogWalk = document.querySelector("#dogwalk-signup").value.trim();
-  const dogFeeding = document.querySelector("#dogfeeding-signup").value.trim();
-  const stSitting = document.querySelector("#STdogSitting-signup").value.trim();
-  const ltSitting = document.querySelector("#LTdogSitting-signup").value.trim();
-  const smallDog = document.querySelector("#smallDog-signup").value.trim();
-  const medDog = document.querySelector("#medDog-signup").value.trim();
-  const largeDog = document.querySelector("#largeDog-signup").value.trim();
+  const dogWalk = document.querySelector("#dogwalk-signup").checked;
+  const dogFeeding = document.querySelector("#dogfeeding-signup").checked;
+  const stSitting = document.querySelector("#STdogSitting-signup").checked;
+  const ltSitting = document.querySelector("#LTdogSitting-signup").checked;
+  const smallDog = document.querySelector("#smallDog-signup").checked;
+  const medDog = document.querySelector("#medDog-signup").checked;
+  const largeDog = document.querySelector("#largeDog-signup").checked;
 
-  console.log(city, dogWalk, dogFeeding, stSitting, ltSitting, smallDog, medDog, largeDog);
+  console.log(phone, city, dogWalk, dogFeeding, stSitting, ltSitting, smallDog, medDog, largeDog);
 
-  if (city) {
-    const response = await fetch("/api/providers/:id", {
+  if (phone&&city) {
+    if (event.target.hasAttribute("provider-id")) {
+    const pid = event.target.getAttribute("provider-id");
+    const response = await fetch(`/api/providers/${pid}`, {
       method: "PUT",
-      body: JSON.stringify({ city, dogWalk, dogFeeding, stSitting, ltSitting, smallDog, medDog, largeDog }),
+      body: JSON.stringify({phone, city, smallDog, medDog, largeDog }),
+     //FIXME:for after blend services body: JSON.stringify({phone, city, dogWalk, dogFeeding, stSitting, ltSitting, smallDog, medDog, largeDog }),
       headers: { "Content-Type": "application/json" },
     });
-    //FIXME: do we want an else here to post an alert box that one of the 3 is missing so can't post?
-console.log("response:" + response);
+  
+    console.log("response:" + response);
     if (response.ok) {
       document.location.replace("/profile");
     } else {
-      alert(response.statusText);
+      alert("change not saved");
+    }
     }
   }
 };
@@ -32,14 +36,15 @@ console.log("response:" + response);
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute("provider-id")) {
     const pid = event.target.getAttribute("provider-id");
+    console.log("provider-id: " + pid);
 //TODO: run the routes for providerupdate and user update
 const isProvider = false;
- const response = await fetch("/api/user/updateisprovider", {
+ const response = await fetch("/api/users/updateisprovider", {
       method: "PUT",
       body: JSON.stringify({ isProvider }),
       headers: { "Content-Type": "application/json" },
     });
-    const response2 = await fetch(`/api/providerInfo/${pid}`, {
+    const response2 = await fetch(`/api/providers/${pid}`, {
       method: "DELETE",
     });
       
@@ -52,8 +57,8 @@ const isProvider = false;
 };
 
 document
-  .querySelector(".info-update")
-  .addEventListener("submit", saveUpdateFormHandler);
+  .querySelector("#save-changes")
+  .addEventListener("click", saveUpdateFormHandler);
 
 document
 .querySelector("#removeProvider")

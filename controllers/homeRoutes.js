@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { ProviderInfo, User, Service } = require("../models");
+const { ProviderInfo, User} = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -30,28 +30,28 @@ router.get("/", async (req, res) => {
   }
 });
 
+//don't think we're using this
+// router.get("/providers/:id", async (req, res) => {
+//   try {
+//     const providerData = await ProviderInfo.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
 
-router.get("/providers/:id", async (req, res) => {
-  try {
-    const providerData = await ProviderInfo.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ["name"],
-        },
-      ],
-    });
+//     const providers = providerData.get({ plain: true });
 
-    const providers = providerData.get({ plain: true });
-
-    res.render("provider-signup", {
-      ...providers,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("provider-signup", {
+//       ...providers,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // Use withAuth middleware to prevent access to route
 router.get("/profile", withAuth, async (req, res) => {
@@ -77,16 +77,15 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/listings", withAuth, async (req, res) => {
   try {
     // FIXME: I think this is going to need to be a find all not findbypk so we can display all provider info listings
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ["password"] },
-      include: [{ model: ProviderInfo }],
+    const providerInfoData = await ProviderInfo.findAll({
+      include: [{ model: User }],
     });
 
-    const user = userData.get({ plain: true });
-    console.log("users from homeroutes get listings"+user);
+  const listings = providerInfoData.map((providerInfo) => providerInfo.get({ plain: true }));
+    console.log("listings from homeroutes get listings "+listings);
     res.render("listings", {
-      ...user,
-      logged_in: true,
+      listings,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -112,12 +111,12 @@ router.get("/userupdate", withAuth, async (req, res) => {
 
 router.get("/providerupdate", withAuth, async (req, res) => {
   try {
-    // FIXME: Need providerInfo also in this route for the handlebars
-    // I think this is going to need to be a find all not findbypk so we can display all provider info listings
-    const userData = await User.findByPk(req.session.user_id, {});
-
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: ProviderInfo }],
+    });
     const user = userData.get({ plain: true });
-    console.log("users from homeroutes get listings" + user);
+    console.log("data from providerupdate search " + user);
     res.render("provider-update", {
       ...user,
       logged_in: true,

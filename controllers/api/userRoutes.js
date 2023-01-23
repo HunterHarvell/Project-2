@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+
 router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -21,17 +22,15 @@ router.put("/update", async (req, res) => {
     console.log("this is before update");
     console.log("this is session id " + req.session.user_id);
     //TODO:replace password:req.body.password in update
-    const userData = await User.update(
-      { name: req.body.name, email: req.body.email },
-      { where: { id: res.session.user_id } }
-    );
-    console.log("update button user data" + userData);
+    const user = await User.findOne({ where: { id: res.session.user_id } });
+     await user.update({ name: req.body.name, email: req.body.email });
+    console.log("update button user data" + user);
     //don't neet cause aleady logged in?
     // req.session.save(() => {
     //   res.session.user_id = userData.id;
     //   req.session.logged_in = true;
 
-    res.status(200).json(userData);
+    res.status(200).json(user);
     //});
   } catch (err) {
     res.status(400).json(err);
@@ -40,13 +39,17 @@ router.put("/update", async (req, res) => {
 
 router.put("/updateisprovider", async (req, res) => {
   try {
-   const userData = await User.update(
-      {isProvider: req.body.isProvider},
+    // const user = await User.findOne({ where: { id: res.session.user_id } });
+    const user = await User.update(
+      req.body,
       { where: { id: req.session.user_id } }
     );
-    console.log("update button user data" + userData);
+    // user.isProvider = req.body.isProvider;
+    // await user.save();
 
-    res.status(200).json(userData);
+    console.log("update button user data" + user);
+
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
   }

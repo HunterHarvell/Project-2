@@ -5,32 +5,33 @@ const providerSignupFormHandler = async (event) => {
 
   const phone = document.querySelector("#phone-signup").value.trim();
   const city = document.querySelector("#location-signup").value.trim();
-  
-  const dogwalk = document.querySelector("#dogwalk-signup").checked;
+  const dogWalk = document.querySelector("#dogwalk-signup").checked;
+  const dogFeed = document.querySelector("#dogfeeding-signup").checked;
+  const sTDogSit = document.querySelector("#STdogSitting-signup").checked;
+  const lTDogSit = document.querySelector("#LTdogSitting-signup").checked;
   const smallDog = document.querySelector("#smallDog-signup").checked;
   const medDog = document.querySelector("#medDog-signup").checked;
   const largeDog = document.querySelector("#largeDog-signup").checked;
 
-  console.log(phone, city, password, isProvider);
-  //don't want provider in the if cause if not checked would be false so not needed and wouldn't
+  console.log(phone, city);
   if (phone && city) {
     const response = await fetch("/api/providers", {
       method: "POST",
-      body: JSON.stringify({ phone, city, smallDog, medDog, largeDog}),
+      body: JSON.stringify({ phone, city, dogWalk,dogFeed, sTDogSit, lTDogSit,small:smallDog, medium:medDog, large:largeDog}),
       headers: { "Content-Type": "application/json" },
     });
-
+    console.log("got to response");
+console.log(response);
     //TODO: add the calls to create the services
     console.log(response);
-    //FIXME: do we want an else with alert box for if one of the three is missing say why can't post?
     if (response.ok) {
-        document.location.replace("/listings");
+        document.location.replace("/profile");
     } else {
-      alert(response.statusText);
+      alert("failed to create provider info - make sure you have filled in phone and city");
     }
   }
 };
 
  document
-   .querySelector(".form-group")
-   .addEventListener("submit", providerSignupFormHandler);
+   .querySelector("#sign-up")
+   .addEventListener("click", providerSignupFormHandler);

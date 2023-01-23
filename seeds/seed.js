@@ -1,11 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, ProviderInfo, Service, Review, Pet } = require('../models');
+const { User, ProviderInfo, Review} = require('../models');
 
 const userData = require('./userData.json');
 const providerInfoData = require('./providerInfoData.json');
 const reviewData = require('./reviewData.json');
-const serviceData = require('./serviceData.json');
-const petData = require('./petData.json');
+
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -25,15 +24,6 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  const pet = await Pet.bulkCreate(petData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  const service = await Service.bulkCreate(serviceData, {
-    individualHooks: true,
-    returning: true,
-  });
 
   process.exit(0);
 };

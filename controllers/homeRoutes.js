@@ -63,7 +63,7 @@ router.get("/profile", withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-      console.log("user from homeroutes getprofile " + user);
+      console.log("user from homeroutes getprofile " + JSON.stringify(user));
 
     res.render("profile", {
       ...user,

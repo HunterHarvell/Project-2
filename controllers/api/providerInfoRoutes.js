@@ -47,19 +47,16 @@ router.post("/", withAuth, async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-const provider= await ProviderInfo.findOne({ where: { id: req.params.id } });
-    await provider.update({...req.body});
-      console.log("provider array: " + provider);
-    if (!provider[0]) {
-      res
-        .status(404)
-        .json({ message: "couldn't find information on provider" });
-      return;
-    }
+    const provider = await ProviderInfo.update(req.body, {
+      where: { id: req.params.id },
+    });
+    console.log("update button user data" + provider);
+
     res.status(200).json(provider);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
+
 });
 
 router.delete("/:id", withAuth, async (req, res) => {
@@ -67,13 +64,13 @@ router.delete("/:id", withAuth, async (req, res) => {
     const providerInfoData = await ProviderInfo.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+       // user_id: req.session.user_id,
       },
     });
     if (providerInfoData) {
       res.status(200).json(providerInfoData);
     } else {
-      res.status(404).json({ message: "couldn't find info on provider" });
+      res.status(404).json({ message: "Delete failed." });
     }
   } catch (err) {
     res.status(500).json(err);

@@ -9,9 +9,6 @@
     <p>Email: {{email}} </p>
   </div>
 </div>
-<div>
-  <img src={{profilePicture}} alt="Defualt Picture" id="uploadedimage">
-</div>
 
 <div>
   {{#if isProvider}}
@@ -19,7 +16,34 @@
     <h3>Thank you for being a Provider!</h3>
     <h3>Your Provider Info:</h3>
     <p>Phone: {{providerInfo.phone}}</p>
-    <p>City: {{providerInfo.city}}</p> 
+    <p>Service City: {{providerInfo.city}}</p> 
+    {{#if providerInfo.dogWalk}}
+    <p>Dog Walks Available</p>
+    {{/if}}
+
+    {{#if providerInfo.dogFeed}}
+    <p>Dog Feeding Available</p>
+    {{/if}}
+
+    {{#if providerInfo.sTDogSit}}
+    <p>Short-Term Dog Sitting Available</p>
+    {{/if}}
+    
+    {{#if providerInfo.lTDogSit}}
+    <p>Long-Term Dog Sitting Available</p>
+    {{/if}}
+
+    {{#if providerInfo.small}}
+    <p>Works with small dogs (40 pounds and under).</p>
+    {{/if}}
+
+    {{#if providerInfo.medium}}
+    <p>Works with medium dogs (40 pounds to 80 pound).</p>
+    {{/if}}
+
+    {{#if providerInfo.large}}
+    <p>Works with large dogs (80 pounds and larger).</p>
+    {{/if}}
 
 
      {{!-- 

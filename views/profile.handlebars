@@ -20,18 +20,18 @@
     <h3>Your Provider Info:</h3>
     <p>Phone: {{providerInfo.phone}}</p>
     <p>City: {{providerInfo.city}}</p> 
-
-
-     {{!-- 
-    FIXME: need service from homeroutes
-    {{#each Service}}
-    <p>Service: {{service.service_type}} ${{service.price}}</p>
-   {{/each}} --}}
+    <p>Dog walking availability: {{providerInfo.dogWalk}}</p>
+    <P>Dog feeding availability: {{providerInfo.dogFeed}}</P>
+    <p>Short-term dogsitting: {{providerInfo.sTDogSit}}</p>
+    <p>Long-term dogsitting: {{providerInfo.lTDogSit}}</p>
+    <p>Small dogs: {{providerInfo.small}}</p>
+    <p>Medium dogs: {{providerInfo.medium}}</p>
+    <p>Large dogs: {{providerInfo.large}}</p>
   {{else}}
 
-    <div class="col-md-6 profile-page">
-        <button class="btn btn-primary" id="becomeProvider" >Become a Provider</button>
-    </div>
+  <div class="col-md-6 profile-page">
+    <button class="btn btn-primary" id="becomeProvider" >Become a Provider</button>
+  </div>
 
   {{/if}}
 

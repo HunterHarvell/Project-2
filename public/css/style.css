@@ -17,11 +17,6 @@ header, .project:not(:last-child) {
   text-decoration: underline;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
 
 body{
   background-color: lightslategray;
@@ -40,3 +35,7 @@ header{
     background-repeat: no-repeat;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 } */
+h1, h2, h3, h4, h5, h6{
+
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

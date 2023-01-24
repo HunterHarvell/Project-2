@@ -14,21 +14,23 @@
 <body class="main-header">
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2 banner">
-      <h1>The Collar Club</h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/listings">listings</a> |
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{!-- {{else}}
-        FIXME: do we want a login
-         on nav bar when on login page? looks kinda tacky
-        <a href="/login">login</a> --}}
-        {{!-- {{else}}
-        <p>Please Login/Sign Up!</p> --}}
-        {{/if}}
-      </nav>
+      <div class="d-flex bg-dark mw-50 p-2">
+        <h1>The Collar Club</h1>
+        <nav>
+          <!-- Conditionally render login or logout links -->
+          {{#if logged_in}}
+          <a href="/listings">listings</a> |
+          <a href="/profile">profile</a> |
+          <button class="no-button" id="logout">logout</button>
+          {{!-- {{else}}
+          FIXME: do we want a login
+          on nav bar when on login page? looks kinda tacky
+          <a href="/login">login</a> --}}
+          {{!-- {{else}}
+          <p>Please Login/Sign Up!</p> --}}
+          {{/if}}
+        </nav>
+      </div>
     </header>
     <main class="container container-fluid mt-5">
       {{{ body }}}

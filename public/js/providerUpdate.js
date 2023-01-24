@@ -4,22 +4,32 @@ const saveUpdateFormHandler = async (event) => {
   const phone = document.querySelector("#phone-signup").value.trim();
   const city = document.querySelector("#location-signup").value.trim();
   const dogWalk = document.querySelector("#dogwalk-signup").checked;
-  const dogFeeding = document.querySelector("#dogfeeding-signup").checked;
-  const stSitting = document.querySelector("#STdogSitting-signup").checked;
-  const ltSitting = document.querySelector("#LTdogSitting-signup").checked;
-  const smallDog = document.querySelector("#smallDog-signup").checked;
-  const medDog = document.querySelector("#medDog-signup").checked;
-  const largeDog = document.querySelector("#largeDog-signup").checked;
+  const dogFeed = document.querySelector("#dogfeeding-signup").checked;
+  const sTDogSit = document.querySelector("#STdogSitting-signup").checked;
+  const lTDogSit = document.querySelector("#LTdogSitting-signup").checked;
+  const small = document.querySelector("#smallDog-signup").checked;
+  const medium = document.querySelector("#medDog-signup").checked;
+  const large = document.querySelector("#largeDog-signup").checked;
 
-  console.log(phone, city, dogWalk, dogFeeding, stSitting, ltSitting, smallDog, medDog, largeDog);
+  console.log(phone, city, dogWalk, dogFeed, sTDogSit, lTDogSit, small, medium, large);
 
   if (phone&&city) {
     if (event.target.hasAttribute("provider-id")) {
     const pid = event.target.getAttribute("provider-id");
     const response = await fetch(`/api/providers/${pid}`, {
+    //const response = await fetch(`/api/providers/`, {
       method: "PUT",
-      body: JSON.stringify({phone, city, smallDog, medDog, largeDog }),
-     //FIXME:for after blend services body: JSON.stringify({phone, city, dogWalk, dogFeeding, stSitting, ltSitting, smallDog, medDog, largeDog }),
+      body: JSON.stringify({
+        phone,
+        city,
+        dogWalk,
+        dogFeed,
+        sTDogSit,
+        lTDogSit,
+        small,
+        medium,
+        large,
+      }),
       headers: { "Content-Type": "application/json" },
     });
   

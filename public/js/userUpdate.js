@@ -21,7 +21,7 @@ console.log("response:" + response);
       document.location.replace("/profile");
     } else {
       // alert(response.statusText);
-      alert("update didn't save");
+      alert("update didn't save - Email must be unique - All fields filled in");
     }
   }
 };

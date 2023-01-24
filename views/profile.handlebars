@@ -9,7 +9,9 @@
     <p>Email: {{email}} </p>
   </div>
 </div>
-
+<div>
+  <img src={{profilePicture}} alt="Defualt Picture" id="uploadedimage">
+</div>
 
 <div>
   {{#if isProvider}}
@@ -18,7 +20,7 @@
     <h3>Your Provider Info:</h3>
     <p>Phone: {{providerInfo.phone}}</p>
     <p>City: {{providerInfo.city}}</p> 
- 
+
 
      {{!-- 
     FIXME: need service from homeroutes

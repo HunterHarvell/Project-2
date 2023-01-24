@@ -44,45 +44,16 @@
     {{#if providerInfo.large}}
     <p>Works with large dogs (80 pounds and larger).</p>
     {{/if}}
-
-
-     {{!-- 
-    FIXME: need service from homeroutes
-    {{#each Service}}
-    <p>Service: {{service.service_type}} ${{service.price}}</p>
-   {{/each}} --}}
-  {{else}}
-
-    <div class="col-md-6 profile-page">
-        <button class="btn btn-primary" id="becomeProvider" >Become a Provider</button>
-    </div>
-
-  {{/if}}
-
-  <div class="col-md-6 profile-page">
-    <button class="btn btn-primary" id="updateProfile" providerCheck="{{isProvider}}" >Update Profile</button>
-  </div>
     
-    
-    {{!-- 
-    FIXME:  Each provider will just have 1 so don't need to loop over them all
-    mathew needs to add the photo how do we retrieve it and show it here?
-    
-    this is how we need to do it for listings page where display all or on selected city?
-    {{#each listing}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/listing/{{service.id}}">{{service.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{service.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
- --}}
+{{else}}
+<div class="col-md-6 profile-page">
+  <button class="btn btn-primary" id="becomeProvider" >Become a Provider</button>
 </div>
 
+{{/if}}
 
+<div class="col-md-6 profile-page">
+  <button class="btn btn-primary" id="updateProfile" providerCheck="{{isProvider}}" >Update Profile</button>
+</div>
 
 <script src="./js/profile.js"></script>

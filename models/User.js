@@ -43,7 +43,7 @@ User.init(
     profilePicture: {
       type: DataTypes.STRING,
       allowNull: true,
-      default: "https://res.cloudinary.com/djkf4ks91/image/upload/v1674528907/h6r1nmdjeguigv3c4xrb.jpg",
+      defaultValue: "https://res.cloudinary.com/djkf4ks91/image/upload/v1674528907/h6r1nmdjeguigv3c4xrb.jpg",
     },
   },
   {

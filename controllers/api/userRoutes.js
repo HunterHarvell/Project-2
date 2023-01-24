@@ -27,7 +27,6 @@ router.put("/update", async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
-    alert("problem reaching table");
   }
 });
 
@@ -45,6 +44,8 @@ router.put("/updateisprovider", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
 
 router.post("/login", async (req, res) => {
   try {

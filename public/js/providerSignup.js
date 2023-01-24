@@ -12,6 +12,7 @@ const providerSignupFormHandler = async (event) => {
   const smallDog = document.querySelector("#smallDog-signup").checked;
   const medDog = document.querySelector("#medDog-signup").checked;
   const largeDog = document.querySelector("#largeDog-signup").checked;
+  const profilePicture = document.querySelector("#uploadedimage").src;
 
   console.log(phone, city);
   if (phone && city) {
@@ -20,14 +21,17 @@ const providerSignupFormHandler = async (event) => {
       body: JSON.stringify({ phone, city, dogWalk,dogFeed, sTDogSit, lTDogSit,small:smallDog, medium:medDog, large:largeDog}),
       headers: { "Content-Type": "application/json" },
     });
-    console.log("got to response");
-console.log(response);
-    //TODO: add the calls to create the services
-    console.log(response);
-    if (response.ok) {
-        document.location.replace("/profile");
+ 
+     const response2 = await fetch("/api/users/update", {
+      method: "PUT",
+      body: JSON.stringify({ profilePicture }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok && response2.ok) {
+      document.location.replace("/profile");
     } else {
-      alert("failed to create provider info - make sure you have filled in phone and city");
+      alert("failed to create/update provider info - make sure you have filled in phone and city");
     }
   }
 };

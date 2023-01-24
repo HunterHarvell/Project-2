@@ -13,7 +13,7 @@ This program is used for Dog Walkers to create listings for their services and d
 ## Screenshots
 
 ### Screenshot of login screen
-![Screenshot of login screen](.png)
+<img src="public/images/loginscreenshot.jpg" width="600" text-align="center">
 ### Screenshot of provider input screen
 ![Screenshot of provider input screen](.png)
 

@@ -29,6 +29,7 @@ const myWidget = cloudinary.createUploadWidget(
       document
         .getElementById("uploadedimage")
         .setAttribute("src", result.info.secure_url);
+   
     }
   }
 );

@@ -10,10 +10,13 @@ const saveUpdateFormHandler = async (event) => {
   const small = document.querySelector("#smallDog-signup").checked;
   const medium = document.querySelector("#medDog-signup").checked;
   const large = document.querySelector("#largeDog-signup").checked;
+  const name = document.querySelector("#name-signup").value.trim();
+  const email = document.querySelector("#email-signup").value.trim();
+  const profilePicture = document.querySelector("#uploadedimage").src;
 
   console.log(phone, city, dogWalk, dogFeed, sTDogSit, lTDogSit, small, medium, large);
 
-  if (phone&&city) {
+  if (phone&&city && email && name) {
     if (event.target.hasAttribute("provider-id")) {
     const pid = event.target.getAttribute("provider-id");
     const response = await fetch(`/api/providers/${pid}`, {
@@ -32,12 +35,17 @@ const saveUpdateFormHandler = async (event) => {
       }),
       headers: { "Content-Type": "application/json" },
     });
-  
-    console.log("response:" + response);
-    if (response.ok) {
+
+    const response2 = await fetch("/api/users/update", {
+      method: "PUT",
+      body: JSON.stringify({ name, email, profilePicture }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok && response2.ok) {
       document.location.replace("/profile");
     } else {
-      alert("change not saved");
+      alert("update didn't save - Email must be unique - All fields filled in");
     }
     }
   }

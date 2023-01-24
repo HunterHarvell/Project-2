@@ -63,7 +63,7 @@ router.get("/profile", withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-      console.log("user from homeroutes getprofile " + user);
+      console.log("user from homeroutes getprofile " + JSON.stringify(user));
 
     res.render("profile", {
       ...user,
@@ -137,9 +137,14 @@ router.get("/login", (req, res) => {
 });
 
 
-router.get("/providersignup", withAuth, (req, res) => {
+router.get("/providersignup", withAuth, async(req, res) => {
    if (req.session.logged_in) {
+    const userData = await User.findByPk(req.session.user_id, {
+    });
+
+    const user = userData.get({ plain: true });
    res.render("provider-signup", {
+      ...user,
       logged_in: true,
     });
     return;
